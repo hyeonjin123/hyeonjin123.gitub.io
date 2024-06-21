@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            background-size: cover;
+            font-family: "Press Start 2P", system-ui;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header .logo {
+            font-size: 2.5vw;
+            color: white;
+            text-decoration: none;
+        }
+        header nav a {
+            margin-left: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.25vw;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        aside, article {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        aside:hover, article:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        aside:hover::before, article:hover::before {
+            content: '⚪';
+            color: white;
+            margin-right: 10px;
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .left-text {
+            font-size: 2vw;
+            margin-left: 20px;
+        }
+        .right-image img {
+            width: 50%;
+            border-radius: 15px;
+        }
+        .left-text a, .right-image a {
+            color: inherit;
+            text-decoration: none;
+        }
+        @keyframes particle {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(0.5);
+            }
+        }
+        .particle {
+            position: absolute;
+            width: 5px; /* Smaller size for more particles */
+            height: 5px; /* Smaller size for more particles */
+            background-color: #FFF;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle 1s forwards;
+        }
+        .custom-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home.html" class="logo">ONF</a>
+        <nav>
+            <a href="mv.html">MV</a>
+            <a href="profile.html">Profile</a>
+            <a href="worldview.html">Worldview</a>
+        </nav>
+    </header>
+    <main>
+        <aside onclick="window.location.href='mv1.html'">
+            <div class="left-text">
+                <a href="mv1.html" style="color: #FFD600;">Beautiful Beautiful</a>
+            </div>
+            <div class="right-image">
+                <a href="mv1.html"><img src="장면8.png" alt="Scene 8"></a>
+            </div>
+        </aside>
+        <article onclick="window.location.href='mv2.html'">
+            <div class="left-text">
+                <a href="mv2.html" style="color: #FFA200;">MY NAME IS</a>
+            </div>
+            <div class="right-image">
+                <a href="mv2.html"><img src="장면14.png" alt="Scene 14"></a>
+            </div>
+        </article>
+    </main>
+    <div class="custom-cursor" id="customCursor"></div>
+    <script>
+        document.addEventListener("mousemove", function(e) {
+            const customCursor = document.getElementById("customCursor");
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+
+            const colors = ['#FE18CF', '#FF243A', '#FF8105', '#0EFCFF'];
+            const particles = 10; // More particles
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 50;
+                particle.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+                document.body.appendChild(particle);
+                particle.addEventListener("animationend", () => {
+                    particle.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

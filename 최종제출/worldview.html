@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            background-size: cover;
+            font-family: "Press Start 2P", system-ui;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        header .logo {
+            font-size: 2.5vw;
+            color: white;
+            text-decoration: none;
+        }
+        header nav a {
+            margin-left: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.25vw;
+        }
+        main {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10%;
+            overflow-y: scroll;
+        }
+        aside, article {
+           
+            width: 100%;
+            margin-bottom: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        aside .image-container {
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        aside .image-container img {
+            width: 45%;
+        }
+       
+        .divider {
+            height: 60px;
+            width: 2px;
+            background-color: #FF1919;
+            margin: 0 20px;
+        }
+
+        
+        aside .description {
+            
+            font-size: 35px;
+            color: white;
+            font-family: "Black Han Sans", sans-serif;
+          
+            
+        }
+        .description1 {
+            padding-left:20px;
+            font-size: 35px;
+            color: white;
+            font-family: "Black Han Sans", sans-serif;
+        }
+        .members1  {
+            display: flex;
+            margin-bottom: 20px;
+            width: 100%;
+            gap:20px;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        .members {
+            justify-content: space-around;
+            align-items: center;
+            display: flex;
+            margin-bottom: 20px;
+            width: 100%;
+            gap: 70px;
+            
+        }
+        article img {
+            width: 30%;
+        }
+        article .caption {
+            font-size: 20px;
+        }
+        .hj-caption { 
+            color: #FF0000;
+        }
+        .eh-caption { 
+            color: #FFB900;
+        }
+        .st-caption { 
+            color: #1AFF48;
+
+        }
+        .sj-caption {
+             color: #A143FF; 
+        }
+        .de-caption {
+             color: #294CFF; 
+        }
+        .yo-caption {
+             color: #41ECFF; 
+             right:0;
+        }
+        .위{
+            display: flex;
+            height:  100px;
+            align-items: center;
+            text-align: center;
+
+        }
+        .custom-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home.html" class="logo">ONF</a>
+        <nav>
+            <a href="mv.html">MV</a>
+            <a href="profile.html">Profile</a>
+            <a href="worldview.html">Worldview</a>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <div class="image-container">
+                <img src="장면1.png" alt="Scene">
+                <div>
+                    <div class="위">
+                        <div class="divider"></div>
+                        <span style="color:#FF1919">worldview</span>
+    
+                    </div>
+                    <div class="description1">세계관 속 시대는 '모든 사람들의 정신을 기계로<br> 이동시켜 휴머노이드가 되는 시대'이다. 
+                        <br>그로 인해 점점 감정이 사라져가는 세상이 되어간다.</div>
+                </div>
+                
+            </div>
+            <div class="description" style="margin-top: 200px;">기술의 발전으로 타임워프도 가능해졌지만 한 집단의 수많은 과거 여행으로 인하여 <br> 멀티유니버스가 생성되었고 타임라인이 엉망이 되었다. <br>그 멀티유니버스에 흩어져버린 멤버들을 찾기 위해 온앤오프는 떠돌고 있다. <br>그들은 각자의 타임라인에서 대립하거나 하나가 되어 그들의 우정을 잊지 않기 위해 여행을 한다.</div>
+            <div class="description" style="margin-top: 200px;">멤버 각자마다 고유의 시리얼 넘버가 있다. 티저 이미지나 뮤직비디오 곳곳에서 볼 수 있다.</div>
+        </aside>
+        <article>
+            <div class="members1">
+                <img src="효진.png" alt="Hyojin">
+                <img src="이션.png" alt="E-Tion">
+                <img src="민균.png" alt="MK">
+            </div>
+            <div class="members">
+                <span class="caption hj-caption">HJ-422-94</span>
+                <span class="caption eh-caption">EH-109-94</span>
+                <span class="caption st-caption">ST-010-16</span>
+            </div>
+            <div class="members1">
+                <img src="승준.png" alt="J-Us">
+                <img src="와이엇.png" alt="Wyatt">
+                <img src="유.png" alt="U">
+            </div>
+            <div class="members">
+                <span class="caption sj-caption">SJ-777-77</span>
+                <span class="caption de-caption">DE-083-17</span>
+                <span class="caption yo-caption">YO-425-83</span>
+            </div>
+        </article>
+    </main>
+    <div class="custom-cursor" id="customCursor"></div>
+    <script>
+        document.addEventListener("mousemove", function(e) {
+            const customCursor = document.getElementById("customCursor");
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+
+            const colors = ['#FE18CF', '#FF243A', '#FF8105', '#0EFCFF'];
+            const particles = 10; // More particles
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 50;
+                particle.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+                document.body.appendChild(particle);
+                particle.addEventListener("animationend", () => {
+                    particle.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('배경1.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Press Start 2P", system-ui;
+            color: white;
+            overflow: hidden;
+            cursor: none; /* Hide default cursor */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            position: relative;
+        }
+        header .logo {
+            font-size: 2.5vw;
+        }
+        header nav a {
+            margin-left: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.25vw;
+        }
+        main {
+            display: flex;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        aside {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        aside img {
+            width: 80%;
+            animation: spin 20s linear infinite;
+        }
+        article {
+            width: 50%;
+            padding: 20px;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes particle {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(0.5);
+            }
+        }
+        .particle {
+            position: absolute;
+            width: 5px; /* Smaller size for more particles */
+            height: 5px; /* Smaller size for more particles */
+            background-color: #FFF;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle 1s forwards;
+        }
+        .custom-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ONF</div>
+        <nav>
+            <a href="mv.html">MV</a>
+            <a href="profile.html">Profile</a>
+            <a href="worldview.html">Worldview</a>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <img src="cd4.png" alt="CD Image">
+        </aside>
+        <article>
+          
+        </article>
+    </main>
+    <div class="custom-cursor" id="customCursor"></div>
+    <script>
+        document.addEventListener("mousemove", function(e) {
+            const customCursor = document.getElementById("customCursor");
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+
+            const colors = ['#FE18CF', '#FF243A', '#FF8105', '#0EFCFF'];
+            const particles = 10; // More particles
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 50;
+                particle.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+                document.body.appendChild(particle);
+                particle.addEventListener("animationend", () => {
+                    particle.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

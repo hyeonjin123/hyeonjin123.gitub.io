@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONF Loading Screen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+            font-family: 'Press Start 2P', system-ui;
+        }
+
+        .press-start-2p-regular {
+            font-family: "Press Start 2P", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .loading-container {
+            position: absolute;
+            bottom: 20%;
+            width: 50%;
+            height: 30px;
+            border: 2px solid #FF243A;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background-color: #FF243A;
+            width: 0;
+            animation: load 3s infinite;
+        }
+
+        .title {
+            color: #FF243A;
+            font-size: 4rem;
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes load {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title press-start-2p-regular">ONF</div>
+    <div class="loading-container">
+        <div class="loading-bar"></div>
+    </div>
+    <audio id="loading-audio" src="뷰티풀 로딩소리1.mp4"></audio>
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById('loading-audio');
+            audio.play();
+            
+            setTimeout(function() {
+                window.location.href = 'Home.html';
+            }, 3000); // Matches the duration of the loading animation (3 seconds)
+        }
+    </script>
+</body>
+</html>

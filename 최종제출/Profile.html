@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            background-size: cover;
+            font-family: "Press Start 2P", system-ui;
+            color: white;
+            position: relative;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        header .logo {
+            font-size: 2.5vw;
+            color: white;
+            text-decoration: none;
+        }
+        header nav a {
+            margin-left: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.25vw;
+        }
+        main {
+            display: flex;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+        aside, article {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 200px;
+        }
+        aside .title, article .title {
+            font-size: 2vw;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        aside .title {
+            color: #FFBF45;
+        }
+        article .title {
+            color: #AAAAAA;
+        }
+        aside img, article img {
+            margin: 0 10px;
+            width: 20%;
+            cursor: pointer;
+        }
+        aside .description, article .description {
+            font-size: 1.5vw;
+            margin-top: 20px;
+        }
+        aside .description {
+            color: #FFBF45;
+            font-family: "Black Han Sans", sans-serif;
+        }
+        article .description {
+            color: #AAAAAA;
+            font-family: "Black Han Sans", sans-serif;
+        }
+        .fullscreen-bg {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .fullscreen-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .custom-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen-bg">
+        <img src="효과2.gif" alt="Background">
+    </div>
+    <header>
+        <a href="home.html" class="logo">ONF</a>
+        <nav>
+            <a href="mv.html">MV</a>
+            <a href="profile.html">Profile</a>
+            <a href="worldview.html">Worldview</a>
+        </nav>
+    </header>
+    <main>
+        <aside onclick="location.href='on.html'">
+            <div class="title">ON</div>
+            <div class="members">
+                <img src="효진.png" alt="Hyojin">
+                <img src="이션.png" alt="E-Tion">
+                <img src="민균.png" alt="MK">
+            </div>
+            <div class="description">감성적이고 매력적인, 밝은 무대를 만드는 보컬라인</div>
+        </aside>
+        <article onclick="location.href='off.html'">
+            <div class="title">OFF</div>
+            <div class="members">
+                <img src="승준.png" alt="J-Us">
+                <img src="와이엇.png" alt="Wyatt">
+                <img src="유.png" alt="U">
+            </div>
+            <div class="description">강렬하고 화려한, 카리스마 있는 무대를 만드는 퍼포먼스 라인</div>
+        </article>
+    </main>
+    <div class="custom-cursor" id="customCursor"></div>
+    <script>
+        document.addEventListener("mousemove", function(e) {
+            const customCursor = document.getElementById("customCursor");
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+
+            const colors = ['#FE18CF', '#FF243A', '#FF8105', '#0EFCFF'];
+            const particles = 10; // More particles
+            for (let i = 0; i < particles; i++) {
+                const particle = document.createElement("div");
+                particle.className = "particle";
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 50;
+                particle.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+                document.body.appendChild(particle);
+                particle.addEventListener("animationend", () => {
+                    particle.remove();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
